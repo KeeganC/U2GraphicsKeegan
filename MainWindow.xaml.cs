@@ -24,7 +24,10 @@ namespace U2GraphicsKeegan
         {
             InitializeComponent();
 
-            Line myLine = CreateLine(10,10,65,10);
+            Line myLine = CreateLine(10, 10, 65, 10);
+
+            drawSquare(10, 65, 10, 65);
+            drawSquare(10, 65 + 1 * 50, 10, 65);
 
             //In MainWindow.xaml set x:Name of canvas to myGrid
             myGrid.Children.Add(CreateLine(10, 10, 65, 10)); 
@@ -56,6 +59,18 @@ namespace U2GraphicsKeegan
             myLine.VerticalAlignment = VerticalAlignment.Center;
             myLine.StrokeThickness = 5;
             return myLine;
+        }
+
+        private void drawSquare(double leftCorner, double rightCorner, double topCorner, double bottomCorner)
+        {
+            //draw left line
+            myGrid.Children.Add(CreateLine(leftCorner, leftCorner, topCorner, bottomCorner));
+            //draw top line
+            myGrid.Children.Add(CreateLine(leftCorner, rightCorner, topCorner, topCorner));
+            //draw right line
+            myGrid.Children.Add(CreateLine(rightCorner, rightCorner, topCorner, bottomCorner));
+            //draw bottom line
+            myGrid.Children.Add(CreateLine(leftCorner, rightCorner, bottomCorner, bottomCorner));
         }
     }
 }
